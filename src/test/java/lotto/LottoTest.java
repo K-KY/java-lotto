@@ -1,10 +1,12 @@
 package lotto;
 
+import lotto.model.GenerateLottoNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -24,4 +26,8 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @Test
+    void lottoNumberGenerateTest() {
+        assertThat(new GenerateLottoNumber(10000).getGeneratedLotto().size()).isEqualTo(10);
+    }
 }
