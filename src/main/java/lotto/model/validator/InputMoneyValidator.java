@@ -1,14 +1,16 @@
 package lotto.model.validator;
 
+import lotto.view.Exceptions;
+
 public class InputMoneyValidator {
-    Exception exception = new Exception();
+    Exceptions exception = new Exceptions();
 // 숫자인지 확인
 // 1000원 단위인지 확인
-    public void validateMoney(String money) {
+    public int validateMoney(String money) {
         int m = validateType(money);
         validateRange(m);
         validateUnit(m);
-
+        return m;
     }
     private int validateType(String money) {
         String[] moneyArr = money.split("");
