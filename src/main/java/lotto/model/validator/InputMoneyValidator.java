@@ -15,7 +15,7 @@ public class InputMoneyValidator {
     private int validateType(String money) {
         String[] moneyArr = money.split("");
         for (int i = 0; i < moneyArr.length; i++) {
-            if (!moneyArr[i].matches("(.*)[0-1](.*)")) {
+            if (!moneyArr[i].matches("(.*)[0-9](.*)")) {
                 exception.inputType();
             }
         }
