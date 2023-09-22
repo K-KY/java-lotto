@@ -24,7 +24,7 @@ public class Exceptions {
         throw new IllegalArgumentException(ERROR_MESSAGE + LENGTH_EXCEPTION);
     }
     //당첨번호가 1보다 작거나 45보다 클 때
-    public void winNumRange() {
+    public void numRange() {
         throw new IllegalArgumentException(ERROR_MESSAGE + RANGE_EXCEPTION + "range = 1 ~ 45");
     }
     //당첨번호가 중복 되었을 때

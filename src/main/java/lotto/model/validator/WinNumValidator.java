@@ -35,7 +35,7 @@ public class WinNumValidator {
         for (int i = 0; i < winNum.length; i++) {
             int n = Integer.parseInt(winNum[i]);
             if (n > 45 || n < 1) {
-                exception.winNumRange();
+                exception.numRange();
             }
         }
     }
