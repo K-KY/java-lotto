@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.model.GenerateLottoNumber;
+import lotto.model.lottoNumber.GenerateLottoNumber;
 import lotto.model.validator.BonusNumValidator;
 import lotto.model.validator.InputMoneyValidator;
 import lotto.model.validator.WinNumValidator;
