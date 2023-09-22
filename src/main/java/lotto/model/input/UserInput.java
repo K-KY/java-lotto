@@ -9,4 +9,7 @@ public class UserInput {
     public String inputWinNum() {
         return Console.readLine();
     }
+    public String inputBonusNum() {
+        return Console.readLine();
+    }
 }
