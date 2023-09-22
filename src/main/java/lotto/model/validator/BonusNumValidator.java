@@ -17,7 +17,7 @@ public class BonusNumValidator {
         return bonus;
     }
     private void validateType(String bonus) {
-        if(!bonus.matches("[0-9]")) {
+        if(!bonus.matches("(.*)[0-9](.*)")) {
             exceptions.inputType();
         }
     }
