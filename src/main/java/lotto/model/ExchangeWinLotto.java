@@ -1,5 +1,6 @@
 package lotto.model;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class ExchangeWinLotto {
@@ -41,7 +42,10 @@ public class ExchangeWinLotto {
 
         abstract Long win();
     }
-
+    HashMap<String, Integer> lottoResult = new HashMap<>();
+    public HashMap<String, Integer> getLottoResult() {
+        return lottoResult;
+    }
     public Long exchange(List<Integer> result) {
         Long revenue = 0L;
         List<Rank> ranks = List.of(Rank.values());
@@ -53,6 +57,8 @@ public class ExchangeWinLotto {
     private Long checkRank(List<Rank> ranks, int result) {
         for (int i = 0; i < ranks.size(); i++) {
             if(ranks.get(i).rank == result) {
+                Rank r = ranks.get(i);
+                lottoResult.put(r.toString(), lottoResult.getOrDefault(r.toString(), 0)+ 1);
                 return ranks.get(i).win();
             }
         }
