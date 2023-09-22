@@ -10,6 +10,12 @@ public class BonusNumValidator {
     public BonusNumValidator(List<String> winNum) {
         this.winNum = winNum;
     }
+    public String validateBonusNum(String bonus) {
+        validateType(bonus);
+        validateRange(bonus);
+        validateDuplicate(bonus);
+        return bonus;
+    }
     private void validateType(String bonus) {
         if(!bonus.matches("[0-9]")) {
             exceptions.inputType();
