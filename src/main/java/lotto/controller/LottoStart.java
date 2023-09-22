@@ -44,8 +44,7 @@ public class LottoStart {
     private String bonusNum(List<String> winNum) {
         String bonusNum = userInput.inputBonusNum();
         BonusNumValidator bonusNumValidator = new BonusNumValidator(winNum);
-        bonusNumValidator.validateBonusNum(bonusNum);
-        return bonusNum;
+        return bonusNumValidator.validateBonusNum(bonusNum);
     }
     private List<Integer> typeChange(List<String> winNum) {
         DataTypeChange dataTypeChange = new DataTypeChange();
