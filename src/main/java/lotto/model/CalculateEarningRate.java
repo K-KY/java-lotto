@@ -2,7 +2,7 @@ package lotto.model;
 
 
 public class CalculateEarningRate {
-    public double calc(int consume, int revenue) {
-        return (double) (revenue / consume) * 100;
+    public double calc(int consume, Long revenue) {
+        return  ((double) revenue / (double) consume);
     }
 }
