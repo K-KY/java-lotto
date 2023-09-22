@@ -63,10 +63,16 @@ class LottoTest {
         assertThatThrownBy(() -> new WinNumValidator().validateWinNum("1,2,3,4,5,78".split(",")))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-    @DisplayName("중복된 숫자가 있으면 예외가 발생한다")
+    @DisplayName("중복된 숫자가 있으면 예외가 발생한다.")
     @Test
     void inputWinNumDuplicateTest() {
         assertThatThrownBy(() -> new WinNumValidator().validateWinNum("1,2,3,4,5,5".split(",")))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("숫자가 6개가 아니라면 예외가 발생한다.")
+    @Test
+    void inputWinNumLengthTest() {
+        assertThatThrownBy(() -> new WinNumValidator().validateWinNum("1, 2, 3, 4, 5".split(",")))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
