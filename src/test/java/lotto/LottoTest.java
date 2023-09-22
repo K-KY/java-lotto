@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.model.GenerateLottoNumber;
+import lotto.model.validator.InputMoneyValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -26,8 +27,15 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 번호가 구입금액 / 1000 만큼 생성된다.")
     @Test
     void lottoNumberGenerateTest() {
         assertThat(new GenerateLottoNumber(10000).getGeneratedLotto().size()).isEqualTo(10);
+    }
+    @DisplayName("구입금액에 숫자가 아닌 문제가 포함되어 있다면 예외가 발생한다.")
+    @Test
+    void inputMoneyTypeTest() {
+        assertThatThrownBy(() -> new InputMoneyValidator().validateMoney("1000l"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
