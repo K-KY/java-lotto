@@ -2,6 +2,7 @@ package lotto.model.validator;
 
 import lotto.view.Exceptions;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,18 +10,21 @@ public class WinNumValidator {
     Exceptions exception = new Exceptions();
 
     public List<String> validateWinNum(String[] winNum) {
-        winNumType(winNum);
+        List<String> list = winNumType(winNum);
         winNumLength(winNum);
         winNumRange(winNum);
         winNumDuplicate(winNum);
-        return Arrays.asList(winNum);
+        return list;
     }
-    private void winNumType(String[] winNum) {
+    private List<String> winNumType(String[] winNum) {
+        List<String> list = new ArrayList<>();
         for (int i = 0; i < winNum.length; i++) {
             if(!winNum[i].matches("(.*)[0-9](.*)")) {
                 exception.inputType();
             }
+            list.add(winNum[i].trim());
         }
+        return list;
     }
     private void winNumLength(String[] winNum) {
         if (winNum.length != 6) {
