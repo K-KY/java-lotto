@@ -11,6 +11,13 @@ import java.util.List;
 
 public class LottoStart {
     UserInput userInput = new UserInput();
+    public void start() {
+        int money = inputMoney();
+        List<LottoNumber> lottoNumbers = purchaseLotto(money);
+        printGeneratedLotto(lottoNumbers);
+        List<String> winNum = inputWinNum();
+
+    }
     private int inputMoney() {
         InputMoneyValidator validator = new InputMoneyValidator();
         String input = userInput.inputMoney();
@@ -28,7 +35,8 @@ public class LottoStart {
     private List<String> inputWinNum() {
         String winNum = userInput.inputWinNum();
         WinNumValidator winNumValidator = new WinNumValidator();
-        return winNumValidator.validateWinNum(winNum.split(", "));
+        return winNumValidator.validateWinNum(winNum.split(","));
     }
+
 
 }
