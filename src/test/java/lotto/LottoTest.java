@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.model.GenerateLottoNumber;
 import lotto.model.validator.InputMoneyValidator;
+import lotto.model.validator.WinNumValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -48,6 +49,24 @@ class LottoTest {
     @Test
     void inputMoneyUnitTest() {
         assertThatThrownBy(() -> new InputMoneyValidator().validateMoney("12345"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("당첨번호에 숫자가 아닌값이 입력되면 예외가 발생한다.")
+    @Test
+    void inputWinNumTypeTest() {
+        assertThatThrownBy(() -> new WinNumValidator().validateWinNum("1,e,3,4,5,6".split(",")))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("당첨번호의 범위를 넘어가는 숫자가 있으면 예외가 발생한다.")
+    @Test
+    void inputWinNumRangeTest() {
+        assertThatThrownBy(() -> new WinNumValidator().validateWinNum("1,2,3,4,5,78".split(",")))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("중복된 숫자가 있으면 예외가 발생한다")
+    @Test
+    void inputWinNumDuplicateTest() {
+        assertThatThrownBy(() -> new WinNumValidator().validateWinNum("1,2,3,4,5,5".split(",")))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
