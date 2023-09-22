@@ -1,13 +1,26 @@
 package lotto.view;
 
 public class SystemOutput {
-    public void MoneyInputMessage() {
-        System.out.println("구입금액을 입력해 주세요.");
+    private enum SystemEnum{
+        MESSAGE_MONEY_INPUT("구입금액을 입력해 주세요."),
+        MESSAGE_PURCHASED("개를 구매했습니다."),
+        MESSAGE_INPUT_BONUS("보너스 번호를 입력해 주세요.");
+        private final String value;
+
+        SystemEnum(String value) {
+            this.value = value;
+        }
+        public String value() {
+            return value;
+        }
     }
-    public void purchaseMassage(int i) {
-        System.out.println(i + "개를 구매했습니다.");
+    public void MoneyInputMessage() {
+        System.out.println(SystemEnum.MESSAGE_MONEY_INPUT.value);
+    }
+    public void purchaseMessage(int i) {
+        System.out.println(i + SystemEnum.MESSAGE_PURCHASED.value);
     }
     public void inputBonusNumMassage() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(SystemEnum.MESSAGE_INPUT_BONUS.value);
     }
 }
