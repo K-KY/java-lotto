@@ -1,6 +1,5 @@
 package lotto.controller;
 
-import lotto.model.CompareLotto;
 import lotto.model.DataTypeChange;
 import lotto.model.lottoNumber.GenerateLottoNumber;
 import lotto.model.lottoNumber.LottoNumber;
@@ -10,7 +9,6 @@ import lotto.model.validator.InputMoneyValidator;
 import lotto.model.validator.WinNumValidator;
 import lotto.view.LottoOutput;
 
-import javax.xml.crypto.Data;
 import java.util.List;
 
 public class LottoStart {
@@ -22,7 +20,7 @@ public class LottoStart {
         printGeneratedLotto(lottoNumbers);
         List<String> winNum = inputWinNum();
         String bonusNum = bonusNum(winNum);
-        compareLotto.compare(lottoNumbers, winNum, bonusNum);
+        compareLotto.compare(lottoNumbers, typeChange(winNum), bonusNum);
     }
     private int inputMoney() {
         InputMoneyValidator validator = new InputMoneyValidator();
