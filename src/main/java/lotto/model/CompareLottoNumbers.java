@@ -12,4 +12,10 @@ public class CompareLottoNumbers {
         }
         return count;
     }
+    public int compareBonusNumber(List<Integer> lottoNumbers, String bonus) {
+        if (lottoNumbers.contains(Integer.parseInt(bonus))) {
+            return 2;
+        }
+        return 0;
+    }
 }
