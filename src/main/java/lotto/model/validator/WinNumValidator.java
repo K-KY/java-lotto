@@ -41,7 +41,7 @@ public class WinNumValidator {
     }
     private void winNumDuplicate(String[] winNum) {
         if (Arrays.stream(winNum).distinct().count() != winNum.length) {
-            exception.duplicateWinNum();
+            exception.duplicateNum();
         }
     }
 }

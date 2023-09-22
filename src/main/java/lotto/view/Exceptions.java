@@ -28,7 +28,7 @@ public class Exceptions {
         throw new IllegalArgumentException(ERROR_MESSAGE + RANGE_EXCEPTION + "range = 1 ~ 45");
     }
     //당첨번호가 중복 되었을 때
-    public void duplicateWinNum() {
+    public void duplicateNum() {
         throw new IllegalArgumentException(ERROR_MESSAGE + DUPLICATE_EXCEPTION);
     }
 }
