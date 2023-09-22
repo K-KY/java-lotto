@@ -25,6 +25,7 @@ public class LottoStart {
     private int inputMoney() {
         InputMoneyValidator validator = new InputMoneyValidator();
         String input = userInput.inputMoney();
+        System.out.println();
         return validator.validateMoney(input);
     }
     private List<LottoNumber> purchaseLotto(int money) {
@@ -38,11 +39,13 @@ public class LottoStart {
     }
     private List<String> inputWinNum() {
         String winNum = userInput.inputWinNum();
+        System.out.println();
         WinNumValidator winNumValidator = new WinNumValidator();
         return winNumValidator.validateWinNum(winNum.split(","));
     }
     private String bonusNum(List<String> winNum) {
         String bonusNum = userInput.inputBonusNum();
+        System.out.println();
         BonusNumValidator bonusNumValidator = new BonusNumValidator(winNum);
         return bonusNumValidator.validateBonusNum(bonusNum);
     }
