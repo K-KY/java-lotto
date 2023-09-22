@@ -6,6 +6,7 @@ public class Exceptions {
     private final String RANGE_EXCEPTION = "범위 내의 숫자를 입력해주세요.";
     private final String DUPLICATE_EXCEPTION = "중복된 숫자가 존재합니다";
     private final String UNIT_EXCEPTION = "1000원 단위로 나누어 떨어지는 금액을 입력해주세요.";
+    private final String LENGTH_EXCEPTION = "6개의 숫자를 입력해주세요.";
     //숫자가 아닌 문자가 포함
     public void inputType() {
         throw new IllegalArgumentException(ERROR_MESSAGE + TYPE_EXCEPTION);
@@ -14,9 +15,13 @@ public class Exceptions {
     public void moneyRange() {
         throw new IllegalArgumentException(ERROR_MESSAGE + RANGE_EXCEPTION + " num >= 1000");
     }
+
     //금액이 1000원 단위로 나누어떨어지는 수가 아닐 때
     public void moneyUnit() {
         throw new IllegalArgumentException(ERROR_MESSAGE + UNIT_EXCEPTION);
+    }
+    public void winNumLength() {
+        throw new IllegalArgumentException(ERROR_MESSAGE + LENGTH_EXCEPTION);
     }
     //당첨번호가 1보다 작거나 45보다 클 때
     public void winNumRange() {
