@@ -18,4 +18,10 @@ public class InputMoneyValidator {
             exception.moneyRange();
         }
     }
+    private void validateUnit(String money) {
+        int unit = Integer.parseInt(money);
+        if (unit % 1000 != 0) {
+            exception.moneyUnit();
+        }
+    }
 }
