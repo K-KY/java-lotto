@@ -10,6 +10,7 @@ public class WinNumValidator {
 
     public List<String> validateWinNum(String[] winNum) {
         winNumType(winNum);
+        winNumLength(winNum);
         winNumRange(winNum);
         winNumDuplicate(winNum);
         return Arrays.asList(winNum);
@@ -19,6 +20,11 @@ public class WinNumValidator {
             if(!winNum[i].matches("(.*)[0-9](.*)")) {
                 exception.inputType();
             }
+        }
+    }
+    private void winNumLength(String[] winNum) {
+        if (winNum.length != 6) {
+            exception.winNumLength();
         }
     }
     private void winNumRange(String[] winNum) {
