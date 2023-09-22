@@ -3,10 +3,18 @@ package lotto.model.validator;
 import lotto.view.Exceptions;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class WinNumValidator {
     Exceptions exception = new Exceptions();
 
+    private void winNumType(String[] winNum) {
+        for (int i = 0; i < winNum.length; i++) {
+            if(!winNum[i].matches("(.*)[0-9](.*)")) {
+                exception.inputType();
+            }
+        }
+    }
     private void winNumRange(String[] winNum) {
         for (int i = 0; i < winNum.length; i++) {
             int n = Integer.parseInt(winNum[i]);
