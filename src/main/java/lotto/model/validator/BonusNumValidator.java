@@ -15,6 +15,11 @@ public class BonusNumValidator {
             exceptions.inputType();
         }
     }
+    private void validateRange(String bonus) {
+        if (Integer.parseInt(bonus) < 1 || Integer.parseInt(bonus) > 45) {
+            exceptions.numRange();
+        }
+    }
 
 
 }
