@@ -18,10 +18,6 @@ public class Exceptions {
     public void moneyUnit() {
         throw new IllegalArgumentException(ERROR_MESSAGE + UNIT_EXCEPTION);
     }
-    //당첨 번호에 숫자가 아닌 문자가 포함
-    public void winNumType() {
-        throw new IllegalArgumentException(ERROR_MESSAGE + TYPE_EXCEPTION);
-    }
     //당첨번호가 1보다 작거나 45보다 클 때
     public void winNumRange() {
         throw new IllegalArgumentException(ERROR_MESSAGE + RANGE_EXCEPTION + "range = 1 ~ 45");
