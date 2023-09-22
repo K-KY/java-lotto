@@ -1,19 +1,27 @@
 package lotto.controller;
 
+import lotto.model.CalculateEarningRate;
 import lotto.model.CompareLottoNumbers;
 import lotto.model.ExchangeWinLotto;
 import lotto.model.lottoNumber.LottoNumber;
+import lotto.view.PrintResult;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CompareLotto {
     private final List<Integer> result = new ArrayList<>();
     CompareLottoNumbers compareNumbers = new CompareLottoNumbers();
+    ExchangeWinLotto exchangeWinLotto = new ExchangeWinLotto();
 
     public void compare(List<LottoNumber> lottoNumbers, List<Integer> winNum, String bonus) {
         checkWinNumber(lottoNumbers, winNum, bonus);
-        exchange(result);
+        Long revenue = exchange(result);
+        CalculateEarningRate calculateEarningRate = new CalculateEarningRate();
+        double earningRate = calculateEarningRate.calc(lottoNumbers.size()*10, revenue);
+        PrintResult printResult = new PrintResult();
+        printResult.print(exchangeWinLotto.getLottoResult(), new BigDecimal(earningRate));
     }
 
     private void checkWinNumber(List<LottoNumber> lottoNumbers, List<Integer> winNum, String bonus) {
@@ -37,7 +45,6 @@ public class CompareLotto {
     }
 
     private Long exchange(List<Integer> result) {
-        ExchangeWinLotto exchangeWinLotto = new ExchangeWinLotto();
         return exchangeWinLotto.exchange(result);
     }
 }
