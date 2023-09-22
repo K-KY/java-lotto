@@ -7,4 +7,7 @@ public class SystemOutput {
     public void purchaseMassage(int i) {
         System.out.println(i + "개를 구매했습니다.");
     }
+    public void inputBonusNumMassage() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+    }
 }
