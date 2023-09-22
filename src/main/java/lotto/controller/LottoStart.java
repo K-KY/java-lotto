@@ -1,23 +1,28 @@
 package lotto.controller;
 
-import lotto.model.GenerateLottoNumber;
-import lotto.model.LottoNumber;
+import lotto.model.CompareLotto;
+import lotto.model.DataTypeChange;
+import lotto.model.lottoNumber.GenerateLottoNumber;
+import lotto.model.lottoNumber.LottoNumber;
 import lotto.model.input.UserInput;
 import lotto.model.validator.BonusNumValidator;
 import lotto.model.validator.InputMoneyValidator;
 import lotto.model.validator.WinNumValidator;
 import lotto.view.LottoOutput;
 
+import javax.xml.crypto.Data;
 import java.util.List;
 
 public class LottoStart {
     UserInput userInput = new UserInput();
     public void start() {
         int money = inputMoney();
+        CompareLotto compareLotto = new CompareLotto();
         List<LottoNumber> lottoNumbers = purchaseLotto(money);
         printGeneratedLotto(lottoNumbers);
         List<String> winNum = inputWinNum();
         String bonusNum = bonusNum(winNum);
+        compareLotto.compare(lottoNumbers, winNum, bonusNum);
     }
     private int inputMoney() {
         InputMoneyValidator validator = new InputMoneyValidator();
@@ -43,6 +48,10 @@ public class LottoStart {
         BonusNumValidator bonusNumValidator = new BonusNumValidator(winNum);
         bonusNumValidator.validateBonusNum(bonusNum);
         return bonusNum;
+    }
+    private List<Integer> typeChange(List<String> winNum) {
+        DataTypeChange dataTypeChange = new DataTypeChange();
+        return dataTypeChange.stringToInteger(winNum);
     }
 
 }
