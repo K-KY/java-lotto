@@ -5,30 +5,30 @@ import java.util.List;
 public class ExchangeWinLotto {
     private enum Rank {
         FIRST(6) {
-            Long win(int rank) {
+            Long win() {
                 return 2000000000L;
             }
         },
         SECOND(7) {
-            Long win(int rank) {
+            Long win() {
                 return 30000000L;
             }
 
         },
         THIRD(5) {
-            Long win(int rank) {
+            Long win() {
                 return 1500000L;
             }
 
         },
         FOURTH(4) {
-            Long win(int rank) {
+            Long win() {
                 return 50000L;
             }
 
         },
         FIFTH(3) {
-            Long win(int rank) {
+            Long win() {
                 return 5000L;
             }
 
@@ -39,10 +39,23 @@ public class ExchangeWinLotto {
             this.rank = rank;
         }
 
-        abstract Long win(int rank);
+        abstract Long win();
     }
 
-    public void exchange(List<Integer> result) {
-
+    public Long exchange(List<Integer> result) {
+        Long revenue = 0L;
+        List<Rank> ranks = List.of(Rank.values());
+        for (int i = 0; i < result.size(); i++) {
+            revenue += checkRank(ranks, result.get(i));
+        }
+        return revenue;
+    }
+    private Long checkRank(List<Rank> ranks, int result) {
+        for (int i = 0; i < ranks.size(); i++) {
+            if(ranks.get(i).rank == result) {
+                return ranks.get(i).win();
+            }
+        }
+        return 0L;
     }
 }
