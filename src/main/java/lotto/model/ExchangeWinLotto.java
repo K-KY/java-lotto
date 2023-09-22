@@ -6,7 +6,7 @@ public class ExchangeWinLotto {
     private enum Rank {
         FIRST(6) {
             Long win() {
-                return 2000000000L;
+                return 200000000L;
             }
         },
         SECOND(7) {
