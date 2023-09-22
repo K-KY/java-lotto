@@ -38,4 +38,10 @@ class LottoTest {
         assertThatThrownBy(() -> new InputMoneyValidator().validateMoney("1000l"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+    @DisplayName("구입금액이 1000보다 작다면 예외가 발생한다.")
+    @Test
+    void inputMoneyRangeTest() {
+        assertThatThrownBy(() -> new InputMoneyValidator().validateMoney("100"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
