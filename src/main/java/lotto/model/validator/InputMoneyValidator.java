@@ -12,4 +12,10 @@ public class InputMoneyValidator {
             }
         }
     }
+    private void validateRange(String money) {
+        int range = Integer.parseInt(money);
+        if (range < 1000) {
+            exception.moneyRange();
+        }
+    }
 }
