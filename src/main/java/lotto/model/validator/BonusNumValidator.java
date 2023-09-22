@@ -21,5 +21,10 @@ public class BonusNumValidator {
         }
     }
 
+    private void validateDuplicate(String bonus) {
+        if (winNum.contains(bonus)) {
+            exceptions.duplicateNum();
+        }
+    }
 
 }
