@@ -1,5 +1,6 @@
 package lotto.model;
 
+import java.util.Collections;
 import java.util.List;
 
 public class LottoNumber {
@@ -12,6 +13,7 @@ public class LottoNumber {
     // Getter 및 Setter 메서드
 
     public List<Integer> getNumbers() {
+        Collections.sort(numbers);
         return numbers;
     }
 
