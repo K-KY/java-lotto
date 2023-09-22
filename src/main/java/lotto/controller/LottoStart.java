@@ -3,6 +3,7 @@ package lotto.controller;
 import lotto.model.GenerateLottoNumber;
 import lotto.model.LottoNumber;
 import lotto.model.input.UserInput;
+import lotto.model.validator.BonusNumValidator;
 import lotto.model.validator.InputMoneyValidator;
 import lotto.model.validator.WinNumValidator;
 import lotto.view.LottoOutput;
@@ -16,7 +17,7 @@ public class LottoStart {
         List<LottoNumber> lottoNumbers = purchaseLotto(money);
         printGeneratedLotto(lottoNumbers);
         List<String> winNum = inputWinNum();
-
+        String bonusNum = bonusNum(winNum);
     }
     private int inputMoney() {
         InputMoneyValidator validator = new InputMoneyValidator();
@@ -37,6 +38,11 @@ public class LottoStart {
         WinNumValidator winNumValidator = new WinNumValidator();
         return winNumValidator.validateWinNum(winNum.split(","));
     }
-
+    private String bonusNum(List<String> winNum) {
+        String bonusNum = userInput.inputBonusNum();
+        BonusNumValidator bonusNumValidator = new BonusNumValidator(winNum);
+        bonusNumValidator.validateBonusNum(bonusNum);
+        return bonusNum;
+    }
 
 }
