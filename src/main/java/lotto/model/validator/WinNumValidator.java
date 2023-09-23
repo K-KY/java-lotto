@@ -11,11 +11,7 @@ public class WinNumValidator {
 
     public List<Integer> validateWinNum(String[] winNum) {
         List<String> list = new ArrayList<>();
-        try {
-            list = winNumType(winNum);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        list = winNumType(winNum);
         return new DataTypeChange().stringToInteger(list);
     }
 
