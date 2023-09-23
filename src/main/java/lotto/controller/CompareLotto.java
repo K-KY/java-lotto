@@ -11,12 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CompareLotto {
-    private final List<Integer> result = new ArrayList<>();
     CompareLottoNumbers compareNumbers = new CompareLottoNumbers();
     ExchangeWinLotto exchangeWinLotto = new ExchangeWinLotto();
-
     public void compare(List<LottoNumber> lottoNumbers, List<Integer> winNum, String bonus) {
-        checkWinNumber(lottoNumbers, winNum, bonus);
+        final List<Integer> result = checkWinNumber(lottoNumbers, winNum, bonus);
         Long revenue = exchange(result);
         CalculateEarningRate calculateEarningRate = new CalculateEarningRate();
         double earningRate = calculateEarningRate.calc(lottoNumbers.size()*10, revenue);
@@ -24,7 +22,9 @@ public class CompareLotto {
         printResult.print(exchangeWinLotto.getLottoResult(), new BigDecimal(earningRate));
     }
 
-    private void checkWinNumber(List<LottoNumber> lottoNumbers, List<Integer> winNum, String bonus) {
+
+    private List<Integer> checkWinNumber(List<LottoNumber> lottoNumbers, List<Integer> winNum, String bonus) {
+        final List<Integer> result = new ArrayList<>();
         int win;
         for (int i = 0; i < lottoNumbers.size(); i++) {
             LottoNumber lottoNumber = lottoNumbers.get(i);
@@ -34,6 +34,7 @@ public class CompareLotto {
             }
             result.add(win);
         }
+        return result;
     }
 
     private int checkSecond(List<Integer> numbers, String bonus) {
