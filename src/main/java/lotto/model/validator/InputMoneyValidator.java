@@ -9,14 +9,9 @@ public class InputMoneyValidator {
 // 1000원 단위인지 확인
     public int validateMoney(String money) {
         int m = 0;
-        try {
         m = validateType(money);
         validateRange(m);
         validateUnit(m);
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
         return m;
     }
 
