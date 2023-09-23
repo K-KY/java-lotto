@@ -25,14 +25,10 @@ public class Lotto {
     Exceptions exception = new Exceptions();
 
     public void validateWinNum(List<String> winNum) {
-        try {
             winNumLength(winNum);
             winNumRange(winNum);
             winNumDuplicate(winNum);
 
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
     }
 
     private void winNumLength(List<String> winNum) {
