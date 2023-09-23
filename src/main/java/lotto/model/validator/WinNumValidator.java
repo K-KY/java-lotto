@@ -1,26 +1,22 @@
 package lotto.model.validator;
 
+import lotto.model.DataTypeChange;
 import lotto.view.Exceptions;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class WinNumValidator {
     Exceptions exception = new Exceptions();
 
-    public List<String> validateWinNum(String[] winNum) {
+    public List<Integer> validateWinNum(String[] winNum) {
         List<String> list = new ArrayList<>();
         try {
             list = winNumType(winNum);
-            winNumLength(winNum);
-            winNumRange(winNum);
-            winNumDuplicate(winNum);
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return list;
+        return new DataTypeChange().stringToInteger(list);
     }
 
     private List<String> winNumType(String[] winNum) {
@@ -32,26 +28,5 @@ public class WinNumValidator {
             list.add(winNum[i].trim());
         }
         return list;
-    }
-
-    private void winNumLength(String[] winNum) {
-        if (winNum.length != 6) {
-            exception.winNumLength();
-        }
-    }
-
-    private void winNumRange(String[] winNum) {
-        for (int i = 0; i < winNum.length; i++) {
-            int n = Integer.parseInt(winNum[i]);
-            if (n > 45 || n < 1) {
-                exception.numRange();
-            }
-        }
-    }
-
-    private void winNumDuplicate(String[] winNum) {
-        if (Arrays.stream(winNum).distinct().count() != winNum.length) {
-            exception.duplicateNum();
-        }
     }
 }
