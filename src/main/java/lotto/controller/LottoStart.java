@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.Lotto;
 import lotto.model.DataTypeChange;
 import lotto.model.lottoNumber.GenerateLottoNumber;
 import lotto.model.lottoNumber.LottoNumber;
@@ -20,9 +21,10 @@ public class LottoStart {
         CompareLotto compareLotto = new CompareLotto();
         List<LottoNumber> lottoNumbers = purchaseLotto(money);
         printGeneratedLotto(lottoNumbers);
-        List<String> winNum = inputWinNum();
-        String bonusNum = bonusNum(winNum);
-        compareLotto.compare(lottoNumbers, typeChange(winNum), bonusNum);
+        List<Integer> winNum = inputWinNum();
+        Lotto lotto = new Lotto(winNum);
+        String bonusNum = bonusNum(new DataTypeChange().integerToString(winNum));
+        compareLotto.compare(lottoNumbers, winNum, bonusNum);
     }
     private int inputMoney() {
         InputMoneyValidator validator = new InputMoneyValidator();
@@ -39,7 +41,7 @@ public class LottoStart {
         LottoOutput lottoOutput = new LottoOutput();
         lottoOutput.printLotto(generatedLotto);
     }
-    private List<String> inputWinNum() {
+    private List<Integer> inputWinNum() {
         String winNum = userInput.inputWinNum();
         System.out.println();
         WinNumValidator winNumValidator = new WinNumValidator();
@@ -51,9 +53,13 @@ public class LottoStart {
         BonusNumValidator bonusNumValidator = new BonusNumValidator(winNum);
         return bonusNumValidator.validateBonusNum(bonusNum);
     }
-    private List<Integer> typeChange(List<String> winNum) {
+    private List<Integer> stringToInteger(List<String> winNum) {
         DataTypeChange dataTypeChange = new DataTypeChange();
         return dataTypeChange.stringToInteger(winNum);
+    }
+    private List<String> integerToString(List<Integer> winNum) {
+        DataTypeChange dataTypeChange = new DataTypeChange();
+        return dataTypeChange.integerToString(winNum);
     }
 
 }
