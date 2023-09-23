@@ -62,19 +62,19 @@ class LottoTest {
     @DisplayName("당첨번호의 범위를 넘어가는 숫자가 있으면 예외가 발생한다.")
     @Test
     void WinNumRangeTest() {
-        assertThatThrownBy(() -> new WinNumValidator().validateWinNum("1,2,3,4,5,78".split(",")))
+        assertThatThrownBy(() -> new Lotto(List.of(1,2,3,4,5,6)).validateWinNum(List.of("1, 2, 3, 4, 5, 78".split(","))))
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @DisplayName("중복된 숫자가 있으면 예외가 발생한다.")
     @Test
     void WinNumDuplicateTest() {
-        assertThatThrownBy(() -> new WinNumValidator().validateWinNum("1,2,3,4,5,5".split(",")))
+        assertThatThrownBy(() -> new Lotto(List.of(1,2,3,4,5,6)).validateWinNum(List.of("1, 2, 3, 4, 5, 5".split(","))))
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @DisplayName("숫자가 6개가 아니라면 예외가 발생한다.")
     @Test
     void WinNumLengthTest() {
-        assertThatThrownBy(() -> new WinNumValidator().validateWinNum("1, 2, 3, 4, 5".split(",")))
+        assertThatThrownBy(() -> new Lotto(List.of(1,2,3,4,5,6)).validateWinNum(List.of("1, 2, 3, 4, 5".split(","))))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
