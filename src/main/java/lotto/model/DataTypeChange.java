@@ -11,4 +11,12 @@ public class DataTypeChange {
         });
         return number;
     }
+
+    public List<String> integerToString(List<Integer> num) {
+        List<String> number = new ArrayList<>();
+        num.forEach(v -> {
+            number.add(String.valueOf(v));
+        });
+        return number;
+    }
 }
